@@ -1,2 +1,4 @@
 *.docx
 GLPK/
+*.swp
+*.swo

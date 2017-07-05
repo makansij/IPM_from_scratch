@@ -26,5 +26,8 @@ def scale(A,x):
         # for each element in the column i scale by x_i 
         for j in range(A.shape[1]):
             A[j,i] = A[j,i]*x_copy[i]
+<<<<<<< HEAD
 
     return A,x
+=======
+>>>>>>> bcca4bf7e16e7af71828cabc9a0ac23f7e27d260

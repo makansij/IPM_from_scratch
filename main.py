@@ -23,7 +23,7 @@ mu = 10**5 # something high
 
 # Starting point 
 '''
-To get a starting point, you need to solve an initial LP, karger skoltech says, although I still have to figure out what that means.
+To get a starting point, you need to solve an initial LP, Karger Kkoltech says, although I still have to figure out what that means.
 '''
 
 # Solution loop
@@ -38,6 +38,5 @@ while mu > 2**-L:
     # note that getting theta also requires knowing "n" but can know that here from 
     #...from the length of the "x" vector.
     theta = get_theta(x, s, mu)
-
 
 

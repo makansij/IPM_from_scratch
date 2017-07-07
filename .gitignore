@@ -2,3 +2,4 @@
 GLPK/
 *.swp
 *.swo
+*.pyc

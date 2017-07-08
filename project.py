@@ -18,6 +18,15 @@ def project(A, mu):
         ValueError if the dimensions for A and mu do not match up.
     '''
     e = np.asmatrix(np.ones(A.shape[1])).T
+    
+    # get basis vectors of the columnspace of A:
+    # get matrix rank
+    n = np.linalg.matrix_rank(A)
+    # get QR decomposition
+    Q, R = np.linalg.qr(A)
+    # get first "n" columns of Q
+    A_basis = np.asmatrix(Q)[:,0:n]
+    A = A_basis
     # remember that a projection is just a linear transformation:
     proj_A = A*np.linalg.inv(A.T*A)*A.T
     # proj_A is a projection matrix, so we can just hit mu with it to get the projection

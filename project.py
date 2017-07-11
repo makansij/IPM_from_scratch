@@ -24,12 +24,16 @@ def project(A, mu):
     n = np.linalg.matrix_rank(A)
     # get QR decomposition
     Q, R = np.linalg.qr(A)
-    # get first "n" columns of Q
+    # get first "n" columns of Q because they form a basis for the columnspace of A
     A_basis = np.asmatrix(Q)[:,0:n]
     A = A_basis
     # remember that a projection is just a linear transformation:
+    # check that the eigenvalues are \in {0 1}
     proj_A = A*np.linalg.inv(A.T*A)*A.T
-    # proj_A is a projection matrix, so we can just hit mu with it to get the projection
+    check_eigs = np.vectorize(lambda x: np.isclose(float(x),1.0) or np.isclose(float(x), 0.0))
+    proj_A_eigs = np.linalg.eig(proj_A)[0]
+    assert np.alltrue(check_eigs(proj_A_eigs)), 'projection matrix proj_A does not look like a projection matrix. the eigenvalues are '+str(proj_A_eigs)
+    # proj_A is a projection matrix, so we can just hit mu with it to get the projection of the ones vector
     mu_vector = mu*e
     dx = proj_A*mu_vector
     
